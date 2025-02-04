@@ -1,0 +1,27 @@
+1. Instalacion de Vite
+    npm create vite@latest
+        react
+        JavaScript
+
+2. Instalacion de Tailwind, redirigirse a la documentacion 
+https://tailwindcss.com/
+    Extension Tailwind CSS
+
+3. Creacion de Pages y todas la paginas y de Nuestro punto de entrada App
+
+4. Instala react rounter documentacion
+    npm install react-router-dom
+    Crear todas las rudas en App/index.jsx
+
+5. Crear componente NavBar con NavLink de reactrouter dom
+
+6. Crear Layout en componentes
+7. Crear componente card
+    pexels para imagenes random
+8. Consumir API
+    **Crearlas ASYNC y AWAIT 
+    **Usar Try Cathc
+    **Usar Variables
+
+9. Context
+    Creamos el archivo de Context  y el App/index.jsx lo envolvemos en ese context
