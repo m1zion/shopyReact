@@ -25,3 +25,8 @@ https://tailwindcss.com/
 
 9. Context
     Creamos el archivo de Context  y el App/index.jsx lo envolvemos en ese context
+
+11. Detail card
+
+12. Heroicons
+    npm install @heroicons/react
