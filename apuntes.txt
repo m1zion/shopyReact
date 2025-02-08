@@ -30,3 +30,5 @@ https://tailwindcss.com/
 
 12. Heroicons
     npm install @heroicons/react
+
+15. Agregar elementos al carrito usando  const [cartProducts,setCartProducts] = useState([]); del context

@@ -14,8 +14,13 @@ export const ShoppingCartProvider  = ({children}) => {
         price: "",
         description: "",
         images: [],  //Para evitar problema de que no lo encuentre
-      });
-
+    });
+    // Shopping Cart Add products to cart
+    const [cartProducts,setCartProducts] = useState([]);
+    // Checkout Side Menu Open/Close
+    const [isCheckoutSideMenuOpen,setIsCheckoutSideMenuOpen] = useState(false);
+    const openCheckoutSideMenu = () => setIsCheckoutSideMenuOpen(true);
+    const closeCheckoutSideMenu = () => setIsCheckoutSideMenuOpen(false);
 
     return (
         <ShoppingCartContext.Provider value={{
@@ -25,7 +30,12 @@ export const ShoppingCartProvider  = ({children}) => {
             closeProductDetail,
             isProductDetailOpen,
             productToShow,
-            setProductToShow
+            setProductToShow,
+            cartProducts,
+            setCartProducts,
+            openCheckoutSideMenu,
+            closeCheckoutSideMenu,
+            isCheckoutSideMenuOpen,
         }}>
             {children}
         </ShoppingCartContext.Provider>   

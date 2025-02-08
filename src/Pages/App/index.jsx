@@ -9,6 +9,9 @@ import NotFound from '../NotFound/'
 import SignIn from '../SignIn/'
 import NavBar from '../../Components/NavBar/'
 import './App.css'
+//Lo importamos aqui en APP y no en Home porque lo usaremos en diferentes partes de la APP
+import CheckoutSideMenu from '../../Components/CheckoutSideMenu'
+
 const AppRoutes = () =>{
   let routes = useRoutes([
     { path: '/',  element: <Home/> },
@@ -27,6 +30,7 @@ const App = () => {
       <BrowserRouter>
         <AppRoutes/>
         <NavBar/>
+        <CheckoutSideMenu/>
       </BrowserRouter> 
     </ShoppingCartProvider>
   )

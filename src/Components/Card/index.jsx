@@ -6,7 +6,15 @@ const Card = (data) => {
     const showProduct = (productDetail) => {
         context.openProductDetail();
         context.setProductToShow(productDetail);
-    }
+    };
+    const addProductsToCart = (event,productData) => {
+        event.stopPropagation(); //Para que no ejecute los dos onCLick
+        context.setCount(context.count + 1);
+        context.setCartProducts( [...context.cartProducts, productData]);
+        context.closeCheckoutSideMenu();
+        context.openCheckoutSideMenu();
+
+    };
     return (
         <div 
         className="bg-white cursor-pointer w-56 h-60 rounded-lg"
@@ -17,9 +25,11 @@ const Card = (data) => {
                 <img className="w-full h-full object-cover rounded-lg" src={data.data.images[0]} alt={data.data.title}></img>
                 <div 
                 className="absolute top-0 right-0 flex justify-center items-center bg-white/85 w-6 h-6 rounded-full m-2"
-                onClick={() => context.setCount(context.count + 1)}
+                onClick={(event) => addProductsToCart(event,data.data)}
                 >
-                    <PlusIcon className="size-4"/>
+                    <PlusIcon 
+                    className="size-4"
+                    />
                 </div>
             </figure>
             <p className="flex justify-between">
