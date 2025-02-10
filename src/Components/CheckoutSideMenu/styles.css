@@ -3,3 +3,6 @@
     height: calc(100vh - 90px);
     top: 68px;
 }
+.scrollable-cards {
+	overflow: scroll;
+}

@@ -1,6 +1,6 @@
-import { useContext } from 'react';
+import { useContext } from 'react'
 import './styles.css'
-import { ShoppingCartContext } from '../../Context';
+import { ShoppingCartContext } from '../../Context'
 import { XMarkIcon } from '@heroicons/react/24/solid'
 
 const ProductDetail = () => {
