@@ -1,4 +1,5 @@
 import { useContext } from 'react'
+import { Link } from 'react-router-dom'
 import './styles.css'
 import { ShoppingCartContext } from '../../Context'
 import OrderCard from '../OrderCard'
@@ -10,6 +11,16 @@ const CheckoutSideMenu = () => {
     const handleDelete = (id) => {
         const filteredProducts = context.cartProducts.filter(product => product.id != id);
         context.setCartProducts(filteredProducts);
+    }
+    const handleCheckout = (id) => {
+      const orderToAdd = { 
+        date: '01.02.25',
+        products: context.cartProducts,
+        totalProducts: context.cartProducts.length,
+        totalPrice: totalPrice(context.cartProducts)
+       };
+       context.setOrder([...context.order, orderToAdd]);
+       context.setCartProducts([]); //limpiamos la orden
     }
     return (
         <aside 
@@ -24,7 +35,7 @@ const CheckoutSideMenu = () => {
                     />
                 </div>
             </div>
-            <div className='px-6 overflow-y-scroll'>
+            <div className='px-6 overflow-y-scroll flex-1'>
             {
             context.cartProducts.map(product => (
                 <OrderCard 
@@ -38,12 +49,20 @@ const CheckoutSideMenu = () => {
             ))
             }
             </div>
-            <div className='px-6 mt-2'>
-                <p className='flex justify-between items-center'>
+            <div className='px-6 mt-2 mb-6'>
+                <p className='flex justify-between items-center mb-2'>
                     <span className='font-light text-xl'>Total</span>
                     <span className='font-medium text-xl'>${totalPrice(context.cartProducts)}</span>
                 </p>
+                <Link to='/my-orders/last'>
+                    <button 
+                    className='w-full bg-black py-3 text-white rounded-lg'
+                    onClick={() => handleCheckout()}>Checkout
+                    </button>
+                </Link>
+                
             </div>
+           
         </aside>
     );
 }
