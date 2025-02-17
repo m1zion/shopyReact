@@ -6,7 +6,10 @@ import ProductDetail from '../../Components/ProductDetail';
 
 function Home() {  
   const context = useContext(ShoppingCartContext);
-  const renderView = () =>{
+  const currentPath = window.location.pathname;
+  let index = currentPath.substring(currentPath.lastIndexOf('/')+1);
+  //console.log(index);
+  const renderView = () =>{   
     if(context.searchByTitle?.length > 0){
       if(context.filteredItems?.length > 0) {
         return (
@@ -18,13 +21,25 @@ function Home() {
       }
     }
     else {
-      return (
-        context.items?.map((item) => (
-          <Card key={item.id} data={item}/>
-        )
-        )
-      );
+      if(index.length > 2){
+        const itemsByCategory = context.items?.filter(item => item.category.name.toLowerCase() == index.toLowerCase());
+        return (
+          itemsByCategory?.map((item) => (
+            <Card key={item.id} data={item}/>
+          )
+          )
+        );
+      }
+      else {
+        return (
+          context.items?.map((item) => (
+            <Card key={item.id} data={item}/>
+          )
+          )
+        );
+      }
     }
+    
   }
   return (
       <Layout>

@@ -37,17 +37,25 @@ export const ShoppingCartProvider  = ({children}) => {
 
     // Get Products by title
     const [searchByTitle,setSearchByTitle]= useState(null);
-    
     const filterItemsByTitle = (items, searchByTitle) => {
         return items?.filter(item => item.title.toLowerCase().includes(searchByTitle.toLowerCase()));
-    }
+    }  
     useEffect(()=>{
         if(searchByTitle){
             setFilteredItems(filterItemsByTitle(items,searchByTitle));
         }
     }, [items,searchByTitle]);
-
-    console.log(filteredItems);
+    // Get Products by category
+    /*const [searchByCategory,setSearchByCategory]= useState(null);
+    const filterItemsByCategory = (items, searchByCategory) => {
+        return items?.filter(item => item.category.name.toLowerCase() == searchByCategory.toLowerCase());
+    }
+    useEffect(()=>{
+        if(searchByCategory){
+            setFilteredItems(filterItemsByCategory(items,searchByCategory));
+        }
+    }, [items,searchByCategory]);
+*/
     return (
         <ShoppingCartContext.Provider value={{
             count,
